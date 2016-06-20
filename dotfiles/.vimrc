@@ -24,10 +24,10 @@ Plugin 'othree/yajs.vim'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'editorconfig/editorconfig'
 Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
 Plugin 'shougo/deoplete.nvim'
 Plugin 'zchee/deoplete-jedi'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'jiangmiao/auto-pairs'
 
 call vundle#end()
 filetype plugin indent on
@@ -63,7 +63,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
 " deoplete
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 
 "" PYTHON SPECIFICS
 
