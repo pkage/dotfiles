@@ -1,3 +1,4 @@
 .vimrc
 .bash
 .bash_profile
+.tmux.conf
