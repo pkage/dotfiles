@@ -16,18 +16,12 @@ createLump() { mkdir $1; touch $1/$1.html; touch $1/$1.js; }
 alias createLump=createLump
 
 export PS1="[\$?] > {\W}\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]: "
-source /Users/patrick/.bazel/bin/bazel-complete.bash
-export PATH=/Users/patrick/Repositories/python/syntaxnet/env_syntaxnet/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/patrick/bin
+#source /Users/patrick/.bazel/bin/bazel-complete.bash
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/patrick/bin
 
 # iterm profile switcher
 it2prof() { echo -e "\033]50;SetProfile=$1\a"; }
 alias it2prof=it2prof
-
-# honestly i don't want to have to type nvim every time
-alias vi="nvim"
-
-# thefuck integration
-eval "$(thefuck --alias)"
 
 # added by Miniconda2 4.0.5 installer
 export PATH="/Users/patrick/miniconda2/bin:$PATH"

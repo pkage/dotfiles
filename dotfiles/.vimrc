@@ -40,7 +40,7 @@ map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " vim airline config
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 set laststatus=2
 
 " go away linter
@@ -93,3 +93,6 @@ set pastetoggle=<F2>
 set tabstop=8
 set shiftwidth=8
 set noexpandtab
+
+" ipad keyboard workaround
+inoremap <M-Space> <Esc>
