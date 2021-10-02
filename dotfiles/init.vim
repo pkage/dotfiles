@@ -179,6 +179,10 @@ let g:deoplete#enable_at_startup = 1
 " haskell
 au FileType haskell ALEEnable
 
+" svelte crap
+let g:svelte_indent_script = 0
+let g:svelte_indent_style = 0
+
 " disable line numbers in terminal
 autocmd TermOpen * setlocal nonumber norelativenumber
 
