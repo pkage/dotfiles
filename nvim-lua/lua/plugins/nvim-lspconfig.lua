@@ -38,3 +38,4 @@ require'lspconfig'.rust_analyzer.setup{}
 
 -- Svelte
 require'lspconfig'.svelte.setup{}
+-- npm install -g svelte-language-server
