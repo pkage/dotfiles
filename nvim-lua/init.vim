@@ -11,7 +11,7 @@ set laststatus=2
 set pastetoggle=<F2>
 set foldlevelstart=99
 set encoding=UTF-8
-set termguicolors
+" set termguicolors
 
 
 " indentation
