@@ -10,6 +10,8 @@ changes:
 
 (10/12/2021)
     - statusline updates (inherit system theme)
+    - fix luasnip+cmp
+    - gitsigns color fixes
 
 (10/05/2021)
     - initial changes
@@ -38,7 +40,8 @@ require('packer').startup(function(use)
         requires = {
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-nvim-lsp',
-            'L3MON4D3/LuaSnip'
+            'L3MON4D3/LuaSnip',
+            'saadparwaiz1/cmp_luasnip'
         },
         config = function()
             require('plugins/nvim-cmp')
@@ -52,7 +55,7 @@ require('packer').startup(function(use)
             'nvim-lua/plenary.nvim'
         },
         config = function()
-            require('gitsigns').setup()
+            require('plugins/gitsigns')
         end
     }
 

@@ -24,6 +24,9 @@ set expandtab
 nnoremap <C-n> :NvimTreeToggle<CR>
 nnoremap <C-p> :lua require'telescope.builtin'.find_files{}<CR>
 
+" EasyAlign
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " vim multiple cursors config
 let g:multi_cursor_use_default_mapping=0
@@ -41,6 +44,8 @@ let g:limelight_conceal_ctermfg = 'gray'
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
+" Some bullshit for the sign column
+highlight SignColumn ctermbg=black
 
 " some bullshit for latex
 " Custom Silent command that will call redraw
