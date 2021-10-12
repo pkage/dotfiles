@@ -8,6 +8,9 @@ patrick's neovim configuration
 
 changes:
 
+(10/12/2021)
+    - statusline updates (inherit system theme)
+
 (10/05/2021)
     - initial changes
     - still has a bunch of VimL extensions
