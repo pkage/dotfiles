@@ -1,21 +1,51 @@
- #! /bin/sh
+#! /usr/bin/zsh
 
-export PATH="$PATH:$HOME/.usr/bin/"
+export PATH="$PATH:/home/patrick/.local/bin/"
 export SHELL="/usr/bin/zsh"
 
-sxhkd           &
-xbanish         &
-caffeine daemon &
+cd /home/patrick
+
+source .config/bspwm/query_monitor.sh
+
+killall sxhkd xbanish compton polybar
+
+sxhkd           &!
+xbanish         &!
+compton         &!
+# caffeine daemon &
 
 ./.fehbg
 
-killall lemonbar
-.config/bspwm/lemonbar_status.sh | lemonbar -b -f "Hack:size=8" | sh &
+# setxkbmap -layout us
+# setxkbmap -option caps:escape
 
-setxkbmap -layout us
-setxkbmap -option caps:escape
+echo "MULTIMONITOR STATE: $MULTIMONITOR"
 
-bspc monitor -d i ii iii iv v vi vii viii ix x 
+if [ $MULTIMONITOR -eq 2 ]; then
+    echo "MULTIMONITOR STATE: $MULTIMONITOR"
+    echo "configuring for two monitors..."
+    polybar -config=/home/patrick/.config/polybar/config.ini -r bar &
+    polybar -config=/home/patrick/.config/polybar/config.ini -r monitor2 &
+
+    bspc monitor $MONITOR_PRIMARY   -d i ii iii iv v vi vii viii ix x
+    bspc monitor $MONITOR_SECONDARY -d i ii iii iv v vi vii viii ix x
+elif [ $MULTIMONITOR -eq 3 ]; then
+    echo "configuring for three monitors..."
+    echo "MULTIMONITOR STATE: $MULTIMONITOR"
+    polybar -config=/home/patrick/.config/polybar/config.ini -r bar &
+    polybar -config=/home/patrick/.config/polybar/config.ini -r monitor2 &
+    polybar -config=/home/patrick/.config/polybar/config.ini -r monitor3 &
+
+
+    bspc monitor $MONITOR_PRIMARY   -d i ii iii iv v vi vii viii ix x
+    bspc monitor $MONITOR_SECONDARY -d i ii iii iv v vi vii viii ix x
+    bspc monitor $MONITOR_TERTIARY  -d i ii iii iv v vi vii viii ix x
+
+else
+    echo "configuring for one monitor..."
+    polybar -config=/home/patrick/.config/polybar/config.ini -r bar &
+    bspc monitor -d i ii iii iv v vi vii viii ix x
+fi
 
 bspc config border_width         2
 bspc config window_gap          64
@@ -35,3 +65,13 @@ bspc rule -a st follow=on
 #bspc rule -a feh state=floating
 #bspc rule -a Kupfer.py focus=on
 #bspc rule -a Screenkey manage=off
+
+# if [[ MULTIMONITOR=1 ]]; then
+#     .config/bspwm/lemonbar.sh | lemonbar -b -o $MONITOR_PRIMARY | sh &!
+# else
+#     .config/bspwm/lemonbar.sh | lemonbar -b | sh &!
+# fi
+
+
+
+pkill -USR1 -x sxhkd
