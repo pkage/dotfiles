@@ -111,6 +111,12 @@ require('packer').startup(function(use)
     -- language support
     use 'pkage/sparkup'
     use 'elzr/vim-json'
+    use {
+        'evanleck/vim-svelte',
+        config = function()
+            require('plugins/vim-svelte')
+        end
+    }
 
     -- latex support
     use 'junegunn/goyo.vim'
