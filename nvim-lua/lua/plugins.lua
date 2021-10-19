@@ -8,6 +8,9 @@ patrick's neovim configuration
 
 changes:
 
+(10/19/2021)
+    - ejs support
+
 (10/12/2021)
     - statusline updates (inherit system theme)
     - fix luasnip+cmp

@@ -11,3 +11,5 @@ require('gitsigns').setup {
 -- Lazy but functional.
 vim.api.nvim_command('highlight SignColumn ctermbg=black')
 vim.api.nvim_command('highlight GitSignsAdd ctermbg=black')
+vim.api.nvim_command('highlight SignColumn ctermbg=black')
+vim.api.nvim_command('highlight GitSignsChange ctermbg=black')

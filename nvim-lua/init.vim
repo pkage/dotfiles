@@ -53,6 +53,8 @@ command! -nargs=+ Silent
 \   execute 'silent ! <args>'
 \ | redraw!
 
+" ejs support
+au BufNewFile,BufRead *.ejs set filetype=html.js
 
 map <leader>ll :!pdflatex -synctex=1 %<cr>
 map <leader>lm :Silent make && open -a Preview && open -a iTerm<cr>
