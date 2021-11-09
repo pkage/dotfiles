@@ -8,6 +8,9 @@ patrick's neovim configuration
 
 changes:
 
+(11/09/2021)
+    - toml support
+
 (10/19/2021)
     - ejs support
 
@@ -114,6 +117,7 @@ require('packer').startup(function(use)
     -- language support
     use 'pkage/sparkup'
     use 'elzr/vim-json'
+    use 'cespare/vim-toml'
     use {
         'evanleck/vim-svelte',
         config = function()
