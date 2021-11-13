@@ -8,6 +8,9 @@ patrick's neovim configuration
 
 changes:
 
+(11/13/2021)
+    - julia support
+
 (11/09/2021)
     - toml support
 
@@ -118,6 +121,7 @@ require('packer').startup(function(use)
     use 'pkage/sparkup'
     use 'elzr/vim-json'
     use 'cespare/vim-toml'
+    use 'JuliaEditorSupport/julia-vim'
     use {
         'evanleck/vim-svelte',
         config = function()
