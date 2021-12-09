@@ -2,7 +2,7 @@
 
 LSP configuration
 
-refer to https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
+refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
 --]]
 
@@ -34,7 +34,9 @@ require'lspconfig'.html.setup {
 require'lspconfig'.rust_analyzer.setup{}
 -- rustup +nightly component add rust-analyzer-preview
 
-
+-- Julia
+require'lspconfig'.julials.setup{}
+-- julia --project=~/.julia/environments/nvim-lspconfig -e 'using Pkg; Pkg.add("LanguageServer")'
 
 -- Svelte
 require'lspconfig'.svelte.setup{}

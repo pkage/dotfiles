@@ -8,6 +8,9 @@ patrick's neovim configuration
 
 changes:
 
+(12/09/2021)
+    - disable project.nvim
+
 (11/13/2021)
     - julia support
 
@@ -88,13 +91,13 @@ require('packer').startup(function(use)
     }
 
     -- nvim project: autocd to project root
-    use {
-        'ahmedkhalf/project.nvim',
-        config = function()
-            require("project_nvim").setup {}
-            require('telescope').load_extension('projects')
-        end
-    }
+    -- use {
+    --     'ahmedkhalf/project.nvim',
+    --     config = function()
+    --         require("project_nvim").setup {}
+    --         require('telescope').load_extension('projects')
+    --     end
+    -- }
 
     -- lualine: statusline
     use {
