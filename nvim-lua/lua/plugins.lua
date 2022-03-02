@@ -132,6 +132,13 @@ require('packer').startup(function(use)
         end
     }
 
+    use {
+        'vim-python/python-syntax',
+        config = function()
+            vim.g.python_highlight_all = 1
+        end
+    }
+
     -- latex support
     use 'junegunn/goyo.vim'
     use 'junegunn/limelight.vim'
