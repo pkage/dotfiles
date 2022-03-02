@@ -9,9 +9,9 @@ setopt autocd
 bindkey -v
 
 # quality of life stuff
-alias l="ls -AFG --color"
-alias ll="ls -AFGhl --color"
-alias res="cd ~/Repositories"
+alias l="ls -AFG"
+alias ll="ls -AFGhl"
+alias res="cd ~/repositories"
 alias ..="cd .."
 alias ...="cd ../.."
 alias .="source"
@@ -19,18 +19,12 @@ alias .="source"
 # random compat stuff
 alias tmux="tmux -u"
 export HOMEBREW_VERBOSE=1
+export JULIA_DEBUG=1
 alias sqlite="sqlite3"
-(cat ~/.cache/wal/sequences &)
-alias reset-colors="cat ~/.cache/wal/sequences"
-user_install() {
-    ln -s $PWD/$1 ~/.local/bin/$1
-    echo  $PWD/$1 " linked to " ~/.local/bin/$1
+notify() {
+    osascript -e "display notification \"$1\" with title \"iTerm2\""
 }
-wal() {
-    /home/patrick/.local/bin/wal -i $1 
-    /home/patrick/.local/bin/betterlockscreen -u $1 
-    
-}
+
 
 # text editor setup
 alias v="nvim"
@@ -64,12 +58,14 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 
 # latex
-alias paper="cd ~/Repositories/school/phd/krhcai"
-alias phd="cd ~/Repositories/school/phd/"
+alias paper="cd ~/Repositories/school/phd/admissions"
+alias phd="cd ~/Repositories/school/phd"
 
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# local bin
+export PATH="$HOME/.local/bin:$PATH"
 faketty () {
      script -qfec "$(printf "%q " "$@")"
 }
@@ -115,7 +111,8 @@ precmd() {
 
     PROMPT="%F{8}%? > %1~$gitslug$venvslug$condaslug λ%f%k "
 }
-export PATH="/home/patrick/.local/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -132,6 +129,3 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
