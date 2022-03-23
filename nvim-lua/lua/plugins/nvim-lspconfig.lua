@@ -41,3 +41,7 @@ require'lspconfig'.julials.setup{}
 -- Svelte
 require'lspconfig'.svelte.setup{}
 -- npm install -g svelte-language-server
+
+-- Tex (texlab)
+require'lspconfig'.texlab.setup{}
+-- brew install texlab --verbose
