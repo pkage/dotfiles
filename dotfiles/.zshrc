@@ -70,6 +70,9 @@ faketty () {
      script -qfec "$(printf "%q " "$@")"
 }
 
+# poetry python
+alias activate="poetry env info --path && source \`poetry env info --path\`/bin/activate"
+
 # prompt
 autoload -Uz vcs_info # git
 zstyle ':vcs_info:git:*' formats '%b'
@@ -113,6 +116,9 @@ precmd() {
 }
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
+export PATH="~/.local/bin:$PATH"
+export PATH="/Library/TeX/texbin:$PATH"
+export PATH="/Users/patrick/Library/Python/3.9/bin:$PATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
