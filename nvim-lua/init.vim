@@ -38,8 +38,8 @@ let g:multi_cursor_quit_key='<Esc>'
 
 " Writing configuration
 command W w
-command WriteMode set tw=79 | set fo+=t | Goyo 85 | echo "Write mode enabled."
-command WriteModeDisable set fo-=t | Goyo | echo "Write mode disabled."
+command WriteMode set tw=79 | set fo+=t | Goyo 85 | Gitsigns toggle_signs | echo "Write mode enabled."
+command WriteModeDisable set fo-=t | Goyo | Gitsigns toggle_signs | echo "Write mode disabled."
 let g:limelight_conceal_ctermfg = 'gray'
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
