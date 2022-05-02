@@ -37,8 +37,21 @@ let g:multi_cursor_quit_key='<Esc>'
 
 
 " Writing configuration
+function WriteModeEnable()
+    " inoremap <C-n> <C-O>:lua require'cmp'.complete()
+    set tw=79
+    set fo+=t
+    Goyo 85
+    Gitsigns toggle_signs
+    echo "Write mode enabled."
+endfunction
+
+" command CmpOff lua require'cmp'.setup { completion = { autocomplete = false } }
+" command CmpOn  lua require'cmp'.setup { completion = { autocomplete = true  } }
+
 command W w
-command WriteMode set tw=79 | set fo+=t | Goyo 85 | Gitsigns toggle_signs | echo "Write mode enabled."
+" command WriteMode set tw=79 | set fo+=t | Goyo 85 | Gitsigns toggle_signs | echo "Write mode enabled."
+command WriteMode call WriteModeEnable()
 command WriteModeDisable set fo-=t | Goyo | Gitsigns toggle_signs | echo "Write mode disabled."
 let g:limelight_conceal_ctermfg = 'gray'
 autocmd! User GoyoEnter Limelight

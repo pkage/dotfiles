@@ -21,7 +21,7 @@ cmp.setup({
         -- For luasnip user.
         { name = 'luasnip' },
 
-        { name = 'buffer' },
+        -- { name = 'buffer' }, -- this is a bit annoying
     }
 })
 
