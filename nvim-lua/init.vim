@@ -42,7 +42,7 @@ function WriteModeEnable()
     set tw=79
     set fo+=t
     Goyo 85
-    Gitsigns toggle_signs
+    Gitsigns detach
     echo "Write mode enabled."
 endfunction
 
@@ -52,7 +52,7 @@ endfunction
 command W w
 " command WriteMode set tw=79 | set fo+=t | Goyo 85 | Gitsigns toggle_signs | echo "Write mode enabled."
 command WriteMode call WriteModeEnable()
-command WriteModeDisable set fo-=t | Goyo | Gitsigns toggle_signs | echo "Write mode disabled."
+command WriteModeDisable set fo-=t | Goyo | Gitsigns attach | echo "Write mode disabled."
 let g:limelight_conceal_ctermfg = 'gray'
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!

@@ -28,6 +28,10 @@ changes:
 (10/05/2021)
     - initial changes
     - still has a bunch of VimL extensions
+
+(05/05/2022)
+    - configure treesitter
+
 --]]
 
 
@@ -80,7 +84,10 @@ require('packer').startup(function(use)
     -- treesitter: make use of incremental parsing
     use {
         'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
+        run = ':TSUpdate',
+        config = function()
+            require('plugins/nvim-treesitter')
+        end
     }
 
     -- nvim tree: nerdtree equivalent
@@ -108,7 +115,6 @@ require('packer').startup(function(use)
         end
     }
 
-
     --- VIM EXTENSIONS ---
 
     -- general
@@ -123,6 +129,7 @@ require('packer').startup(function(use)
     -- language support
     use 'pkage/sparkup'
     use 'elzr/vim-json'
+    -- use 'vieira/vim-javascript'
     use 'cespare/vim-toml'
     use 'JuliaEditorSupport/julia-vim'
     use {
