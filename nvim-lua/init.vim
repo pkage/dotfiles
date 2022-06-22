@@ -69,7 +69,7 @@ command! -nargs=+ Silent
 " ejs support
 au BufNewFile,BufRead *.ejs set filetype=html.js
 
-map <leader>ll :!pdflatex -synctex=1 %<cr>
+map <leader>ll :!lualatex -synctex=1 %<cr>
 map <leader>lm :make<cr>
 map <leader>lb :make biblio<cr>
 map <leader>ls :w<CR>:silent !/Applications/Skim.app/Contents/SharedSupport/displayline <C-r>=line('.')<CR> %<.pdf<CR><CR>
