@@ -34,6 +34,9 @@ changes:
 
 (07/18/2022)
     - add docstring generator
+
+(07/21/2022)
+    - add spellchecker for neovim
 --]]
 
 
@@ -126,13 +129,23 @@ require('packer').startup(function(use)
                 input_after_comment = true,
                 languages = {
                     python = {
-                        annotation_convention = 'reST'
+                        template = {
+                            annotation_convention = 'reST'
+                        }
                     }   
                 }
             }
         end,
         requires = "nvim-treesitter/nvim-treesitter",
         tag = "*"
+    }
+
+    -- spellsitter: syntax aware spellcheck
+    use {
+        'lewis6991/spellsitter.nvim',
+        config = function()
+            require('spellsitter').setup()
+        end
     }
 
     --- VIM EXTENSIONS ---
