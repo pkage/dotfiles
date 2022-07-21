@@ -32,6 +32,8 @@ changes:
 (05/05/2022)
     - configure treesitter
 
+(07/18/2022)
+    - add docstring generator
 --]]
 
 
@@ -113,6 +115,24 @@ require('packer').startup(function(use)
         config = function()
             require('plugins/lualine')
         end
+    }
+
+    -- neogen: docstring generator
+    use {
+        "danymat/neogen",
+        config = function()
+            require('neogen').setup {
+                enabled = true,
+                input_after_comment = true,
+                languages = {
+                    python = {
+                        annotation_convention = 'reST'
+                    }   
+                }
+            }
+        end,
+        requires = "nvim-treesitter/nvim-treesitter",
+        tag = "*"
     }
 
     --- VIM EXTENSIONS ---
