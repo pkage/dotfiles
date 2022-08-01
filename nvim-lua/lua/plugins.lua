@@ -37,6 +37,9 @@ changes:
 
 (07/21/2022)
     - add spellchecker for neovim
+
+(08/01/2022)
+    - remove stable tag for neogen
 --]]
 
 
@@ -136,8 +139,8 @@ require('packer').startup(function(use)
                 }
             }
         end,
-        requires = "nvim-treesitter/nvim-treesitter",
-        tag = "*"
+        requires = "nvim-treesitter/nvim-treesitter"
+        -- tag = "*"
     }
 
     -- spellsitter: syntax aware spellcheck
