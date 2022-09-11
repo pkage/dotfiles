@@ -72,7 +72,7 @@ au BufNewFile,BufRead *.ejs set filetype=html.js
 " hop config
 map <leader><leader>w :HopWord<cr>
 map <leader><leader>b :HopWordBC<cr>
-map <leader><leader>l :HopLine<cr>
+map <leader><leader>l :HopLineStart<cr>
 
 
 " tex support

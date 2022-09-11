@@ -43,7 +43,9 @@ changes:
 
 (09/11/2022)
     - replace easymotion with hop.nvim
-    - replace easymotion
+    - replace goyo and limelight with zen-mode and twilight
+    - finally fix cmp supertab
+    - install luasnip properly
     - add typescript support
     - add colorscheme
 --]]
@@ -65,6 +67,7 @@ require('packer').startup(function(use)
         end
     }
 
+    use { 'L3MON4D3/LuaSnip', run = "make install_jsregexp" }
     use {
         'hrsh7th/nvim-cmp',
         requires = {
@@ -172,6 +175,9 @@ require('packer').startup(function(use)
         'folke/zen-mode.nvim',
         config = function()
             require('zen-mode').setup {
+                window = {
+                    width = 85
+                },
                 plugins = {
                     gitsigns = { enabled = true },
                 }
