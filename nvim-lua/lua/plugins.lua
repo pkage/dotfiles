@@ -176,7 +176,10 @@ require('packer').startup(function(use)
         config = function()
             require('zen-mode').setup {
                 window = {
-                    width = 85
+                    width = 85,
+                    options = {
+                        number = false
+                    }
                 },
                 plugins = {
                     gitsigns = { enabled = true },
