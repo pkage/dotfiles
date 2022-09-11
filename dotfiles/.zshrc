@@ -16,6 +16,11 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias .="source"
 
+# cd*
+alias cdw="pwd > /tmp/lastcd"
+alias cdr="cd \`cat /tmp/lastcd\`"
+alias cds="cat /tmp/lastcd"
+
 # random compat stuff
 alias tmux="tmux -u"
 export HOMEBREW_VERBOSE=1
@@ -45,6 +50,10 @@ alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %
 alias gp="git pull"
 alias gs="git status"
 
+forgit_add=gai
+forgit_diff=gdi
+source ~/.local/share/forgit/forgit.plugin.zsh
+
 # render manpages nicely
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'
@@ -58,7 +67,6 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 
 # latex
-alias paper="cd ~/Repositories/school/phd/admissions"
 alias phd="cd ~/Repositories/school/phd"
 
 # rust
@@ -135,3 +143,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+export PATH="/Users/patrick/Library/Python/3.10/bin:$PATH"
