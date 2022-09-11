@@ -178,7 +178,8 @@ require('packer').startup(function(use)
                 window = {
                     width = 85,
                     options = {
-                        number = false
+                        number = false,
+                        signcolumn = "no"
                     }
                 },
                 plugins = {
