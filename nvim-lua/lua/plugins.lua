@@ -194,9 +194,9 @@ require('packer').startup(function(use)
         'folke/twilight.nvim',
         config = function()
             require('twilight').setup {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
+              -- disable treesitter and just use line context for now
+              -- TODO: should investigate correct treesitter tags
+              treesitter = false 
             }
         end
     }
