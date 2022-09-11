@@ -11,7 +11,8 @@ set laststatus=2
 set pastetoggle=<F2>
 set foldlevelstart=99
 set encoding=UTF-8
-" set termguicolors
+set termguicolors
+colorscheme moonfly
 
 
 " indentation
@@ -41,8 +42,7 @@ function WriteModeEnable()
     " inoremap <C-n> <C-O>:lua require'cmp'.complete()
     set tw=79
     set fo+=t
-    Goyo 85
-    Gitsigns detach
+    ZenMode
     echo "Write mode enabled."
 endfunction
 
@@ -52,7 +52,7 @@ endfunction
 command W w
 " command WriteMode set tw=79 | set fo+=t | Goyo 85 | Gitsigns toggle_signs | echo "Write mode enabled."
 command WriteMode call WriteModeEnable()
-command WriteModeDisable set fo-=t | Goyo | Gitsigns attach | echo "Write mode disabled."
+command WriteModeDisable set fo-=t | ZenMode | echo "Write mode disabled."
 let g:limelight_conceal_ctermfg = 'gray'
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!

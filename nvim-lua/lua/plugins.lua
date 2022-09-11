@@ -43,6 +43,9 @@ changes:
 
 (09/11/2022)
     - replace easymotion with hop.nvim
+    - replace easymotion
+    - add typescript support
+    - add colorscheme
 --]]
 
 
@@ -154,14 +157,43 @@ require('packer').startup(function(use)
         end
     }
 
+    -- hop: easymotion but without modifying buffers
     use {
         'phaazon/hop.nvim',
         branch = 'v2', -- optional but strongly recommended
         config = function()
             -- you can configure Hop the way you like here; see :h hop-config
-            require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+            require'hop'.setup {}
         end
     }
+
+    -- zen-mode.nvim: neovim focus writing mode
+    use {
+        'folke/zen-mode.nvim',
+        config = function()
+            require('zen-mode').setup {
+                plugins = {
+                    gitsigns = { enabled = true },
+                }
+            }
+        end
+    }
+
+    -- twilight.nvim: dim areas of text that aren't being interacted with
+    use {
+        'folke/twilight.nvim',
+        config = function()
+            require('twilight').setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    }
+
+    -- moonfly: color scheme
+    use 'bluz71/vim-moonfly-colors'
+
 
     --- VIM EXTENSIONS ---
 
@@ -195,7 +227,7 @@ require('packer').startup(function(use)
     }
 
     -- latex support
-    use 'junegunn/goyo.vim'
-    use 'junegunn/limelight.vim'
+    -- use 'junegunn/goyo.vim'
+    -- use 'junegunn/limelight.vim'
 end)
 
