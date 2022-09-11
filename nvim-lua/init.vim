@@ -69,6 +69,13 @@ command! -nargs=+ Silent
 " ejs support
 au BufNewFile,BufRead *.ejs set filetype=html.js
 
+" hop config
+map <leader><leader>w :HopWord<cr>
+map <leader><leader>b :HopWordBC<cr>
+map <leader><leader>l :HopLine<cr>
+
+
+" tex support
 map <leader>ll :!lualatex -synctex=1 %<cr>
 map <leader>lm :make<cr>
 map <leader>lb :make biblio<cr>

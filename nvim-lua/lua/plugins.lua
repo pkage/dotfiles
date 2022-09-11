@@ -40,6 +40,9 @@ changes:
 
 (08/01/2022)
     - remove stable tag for neogen
+
+(09/11/2022)
+    - replace easymotion with hop.nvim
 --]]
 
 
@@ -151,6 +154,15 @@ require('packer').startup(function(use)
         end
     }
 
+    use {
+        'phaazon/hop.nvim',
+        branch = 'v2', -- optional but strongly recommended
+        config = function()
+            -- you can configure Hop the way you like here; see :h hop-config
+            require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+        end
+    }
+
     --- VIM EXTENSIONS ---
 
     -- general
@@ -159,7 +171,7 @@ require('packer').startup(function(use)
     -- movement
     use 'junegunn/vim-easy-align'
     use 'terryma/vim-multiple-cursors'
-    use 'easymotion/vim-easymotion'
+    -- use 'easymotion/vim-easymotion'
     use 'tpope/vim-commentary'
 
     -- language support
