@@ -11,6 +11,7 @@ set laststatus=2
 set pastetoggle=<F2>
 set foldlevelstart=99
 set encoding=UTF-8
+set signcolumn=yes
 set termguicolors
 colorscheme moonfly
 
