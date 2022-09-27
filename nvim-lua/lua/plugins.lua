@@ -48,6 +48,9 @@ changes:
     - install luasnip properly
     - add typescript support
     - add colorscheme
+
+(09/27/2022)
+    - add luapad for nvim plugin dev
 --]]
 
 
@@ -200,6 +203,8 @@ require('packer').startup(function(use)
             }
         end
     }
+
+    use { 'rafcamlet/nvim-luapad', requires = 'antoinemadec/FixCursorHold.nvim' }
 
     -- moonfly: color scheme
     use 'bluz71/vim-moonfly-colors'
