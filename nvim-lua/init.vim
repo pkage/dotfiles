@@ -43,6 +43,7 @@ function WriteModeEnable()
     " inoremap <C-n> <C-O>:lua require'cmp'.complete()
     set tw=79
     set fo+=t
+    set spell
     ZenMode
     echo "Write mode enabled."
 endfunction
