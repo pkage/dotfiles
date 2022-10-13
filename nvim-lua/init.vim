@@ -71,9 +71,12 @@ command! -nargs=+ Silent
 au BufNewFile,BufRead *.ejs set filetype=html.js
 
 " hop config
-map <leader><leader>w :HopWord<cr>
-map <leader><leader>b :HopWordBC<cr>
-map <leader><leader>l :HopLineStart<cr>
+map <leader><leader>w <cmd>HopWord<cr>
+map <leader><leader>b <cmd>HopWordBC<cr>
+map <leader><leader>l <cmd>HopLineStart<cr>
+
+" convert " to '
+map <leader>' V:s/"/'/g<cr>
 
 
 " tex support
