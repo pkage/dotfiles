@@ -204,7 +204,25 @@ require('packer').startup(function(use)
         end
     }
 
-    use { 'rafcamlet/nvim-luapad', requires = 'antoinemadec/FixCursorHold.nvim' }
+    -- nvim luapad - lua scratchpad
+    use {
+        'rafcamlet/nvim-luapad',
+        opt = true, cmd = {'Luapad'},
+        requires = 'antoinemadec/FixCursorHold.nvim'
+    }
+
+    use {
+        '~/Repositories/python/coauthor.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            -- default configuration options shown
+            require('coauthor').setup({
+                server_uri = 'http://dt.ts.ka.ge:8012',
+                max_length = 256
+            })
+        end
+    }
+
 
     -- moonfly: color scheme
     use 'bluz71/vim-moonfly-colors'
