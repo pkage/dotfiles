@@ -48,12 +48,20 @@ function WriteModeEnable()
     echo "Write mode enabled."
 endfunction
 
+function WriteModeLightEnable()
+    set tw=79
+    set fo+=t
+    set spell
+    echo "Light mode write enabled"
+endfunction
+
 " command CmpOff lua require'cmp'.setup { completion = { autocomplete = false } }
 " command CmpOn  lua require'cmp'.setup { completion = { autocomplete = true  } }
 
 command W w
 " command WriteMode set tw=79 | set fo+=t | Goyo 85 | Gitsigns toggle_signs | echo "Write mode enabled."
 command WriteMode call WriteModeEnable()
+command WriteModeLight call WriteModeLightEnable()
 command WriteModeDisable set fo-=t | ZenMode | echo "Write mode disabled."
 let g:limelight_conceal_ctermfg = 'gray'
 autocmd! User GoyoEnter Limelight
