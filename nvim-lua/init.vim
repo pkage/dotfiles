@@ -85,7 +85,9 @@ map <leader><leader>b <cmd>HopWordBC<cr>
 map <leader><leader>l <cmd>HopLineStart<cr>
 
 " convert " to '
-map <leader>' V:s/"/'/g<cr>
+map <leader>' V:s/"/'/g<cr>:noh<cr>
+" remove semicolons
+map <leader>; V:s/;//g<cr>:noh<cr>
 
 
 " tex support
