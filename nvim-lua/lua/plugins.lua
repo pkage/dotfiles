@@ -51,6 +51,9 @@ changes:
 
 (09/27/2022)
     - add luapad for nvim plugin dev
+
+(02/19/2023)
+    - fix hop
 --]]
 
 
@@ -228,6 +231,9 @@ require('packer').startup(function(use)
     use 'bluz71/vim-moonfly-colors'
 
 
+    -- fun: destroy your code
+    use 'eandrju/cellular-automaton.nvim'
+
     --- VIM EXTENSIONS ---
 
     -- general
@@ -244,6 +250,7 @@ require('packer').startup(function(use)
     use 'elzr/vim-json'
     -- use 'vieira/vim-javascript'
     use 'cespare/vim-toml'
+    use 'smerrill/vcl-vim-plugin'
     use 'JuliaEditorSupport/julia-vim'
     use {
         'evanleck/vim-svelte',
