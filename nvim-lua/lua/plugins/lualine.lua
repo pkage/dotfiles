@@ -1,6 +1,6 @@
 require('lualine').setup({
     options = {
-        theme = '16color',
+        -- theme = 'moonfly',
         icons_enabled = false,
         component_separators = {'', ''},
         section_separators   = {'', ''}

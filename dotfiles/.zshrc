@@ -1,6 +1,9 @@
 autoload bashcompinit
 bashcompinit
 
+fpath+=~/.zfunc
+autoload -Uz compinit && compinit
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -16,6 +19,11 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias .="source"
 
+# cd*
+alias cdw="pwd > /tmp/lastcd"
+alias cdr="cd \`cat /tmp/lastcd\`"
+alias cds="cat /tmp/lastcd"
+
 # random compat stuff
 alias tmux="tmux -u"
 export HOMEBREW_VERBOSE=1
@@ -24,6 +32,7 @@ alias sqlite="sqlite3"
 notify() {
     osascript -e "display notification \"$1\" with title \"iTerm2\""
 }
+alias jupyter-lab-remote="jupyter lab --ip=0.0.0.0 --no-browser"
 
 
 # text editor setup
@@ -44,6 +53,11 @@ alias gf="git fetch"
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gp="git pull"
 alias gs="git status"
+alias gm="git merge"
+
+forgit_add=gai
+forgit_diff=gdi
+source ~/.local/share/forgit/forgit.plugin.zsh
 
 # render manpages nicely
 export LESS_TERMCAP_mb=$'\e[1;32m'
@@ -57,9 +71,9 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 # some nvr garbage
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 
-# latex
-alias paper="cd ~/Repositories/school/phd/admissions"
+# jumps
 alias phd="cd ~/Repositories/school/phd"
+alias work="cd ~/Repositories/work"
 
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -122,16 +136,26 @@ export PATH="/Users/patrick/Library/Python/3.9/bin:$PATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/patrick/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    if [ -f "/Users/patrick/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/Users/patrick/mambaforge/etc/profile.d/conda.sh"
     else
-        export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+        export PATH="/Users/patrick/mambaforge/bin:$PATH"
     fi
 fi
 unset __conda_setup
+
+if [ -f "/Users/patrick/mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "/Users/patrick/mambaforge/etc/profile.d/mamba.sh"
+fi
 # <<< conda initialize <<<
 
+export PATH="/Users/patrick/Library/Python/3.10/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/patrick/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm endexport PATH="/opt/homebrew/opt/ruby/bin:$PATH"

@@ -40,6 +40,20 @@ changes:
 
 (08/01/2022)
     - remove stable tag for neogen
+
+(09/11/2022)
+    - replace easymotion with hop.nvim
+    - replace goyo and limelight with zen-mode and twilight
+    - finally fix cmp supertab
+    - install luasnip properly
+    - add typescript support
+    - add colorscheme
+
+(09/27/2022)
+    - add luapad for nvim plugin dev
+
+(02/19/2023)
+    - fix hop
 --]]
 
 
@@ -59,6 +73,7 @@ require('packer').startup(function(use)
         end
     }
 
+    use { 'L3MON4D3/LuaSnip', run = "make install_jsregexp" }
     use {
         'hrsh7th/nvim-cmp',
         requires = {
@@ -151,6 +166,74 @@ require('packer').startup(function(use)
         end
     }
 
+    -- hop: easymotion but without modifying buffers
+    use {
+        'phaazon/hop.nvim',
+        branch = 'v2', -- optional but strongly recommended
+        config = function()
+            -- you can configure Hop the way you like here; see :h hop-config
+            require'hop'.setup {}
+        end
+    }
+
+    -- zen-mode.nvim: neovim focus writing mode
+    use {
+        'folke/zen-mode.nvim',
+        config = function()
+            require('zen-mode').setup {
+                window = {
+                    width = 85,
+                    options = {
+                        number = false,
+                        signcolumn = "no"
+                    }
+                },
+                plugins = {
+                    gitsigns = { enabled = true },
+                }
+            }
+        end
+    }
+
+    -- twilight.nvim: dim areas of text that aren't being interacted with
+    use {
+        'folke/twilight.nvim',
+        config = function()
+            require('twilight').setup {
+              -- disable treesitter and just use line context for now
+              -- TODO: should investigate correct treesitter tags
+              treesitter = false 
+            }
+        end
+    }
+
+    -- nvim luapad - lua scratchpad
+    use {
+        'rafcamlet/nvim-luapad',
+        opt = true, cmd = {'Luapad'},
+        requires = 'antoinemadec/FixCursorHold.nvim'
+    }
+
+    use {
+        '~/Repositories/python/coauthor.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            -- default configuration options shown
+            require('coauthor').setup({
+                server_uri = 'http://dt.ts.ka.ge:8012',
+                max_length = 256
+            })
+        end
+    }
+
+
+    -- moonfly: color scheme
+    use 'bluz71/vim-moonfly-colors'
+
+
+    -- fun: destroy your code
+    use 'eandrju/cellular-automaton.nvim'
+
     --- VIM EXTENSIONS ---
 
     -- general
@@ -159,7 +242,7 @@ require('packer').startup(function(use)
     -- movement
     use 'junegunn/vim-easy-align'
     use 'terryma/vim-multiple-cursors'
-    use 'easymotion/vim-easymotion'
+    -- use 'easymotion/vim-easymotion'
     use 'tpope/vim-commentary'
 
     -- language support
@@ -167,6 +250,7 @@ require('packer').startup(function(use)
     use 'elzr/vim-json'
     -- use 'vieira/vim-javascript'
     use 'cespare/vim-toml'
+    use 'smerrill/vcl-vim-plugin'
     use 'JuliaEditorSupport/julia-vim'
     use {
         'evanleck/vim-svelte',
@@ -183,7 +267,7 @@ require('packer').startup(function(use)
     }
 
     -- latex support
-    use 'junegunn/goyo.vim'
-    use 'junegunn/limelight.vim'
+    -- use 'junegunn/goyo.vim'
+    -- use 'junegunn/limelight.vim'
 end)
 

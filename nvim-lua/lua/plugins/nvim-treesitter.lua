@@ -5,6 +5,7 @@ require'nvim-treesitter.configs'.setup {
       "lua",
       "rust",
       "javascript",
+      "typescript",
       "latex",
       "julia",
       "svelte",
