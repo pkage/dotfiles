@@ -54,6 +54,10 @@ changes:
 
 (02/19/2023)
     - fix hop
+
+(06/23/2023)
+    - add Nix support
+    - remove coauthor (for now)
 --]]
 
 
@@ -214,17 +218,17 @@ require('packer').startup(function(use)
         requires = 'antoinemadec/FixCursorHold.nvim'
     }
 
-    use {
-        '~/Repositories/python/coauthor.nvim',
-        requires = { 'nvim-lua/plenary.nvim' },
-        config = function()
-            -- default configuration options shown
-            require('coauthor').setup({
-                server_uri = 'http://dt.ts.ka.ge:8012',
-                max_length = 256
-            })
-        end
-    }
+    -- use {
+    --     '~/Repositories/python/coauthor.nvim',
+    --     requires = { 'nvim-lua/plenary.nvim' },
+    --     config = function()
+    --         -- default configuration options shown
+    --         require('coauthor').setup({
+    --             server_uri = 'http://dt.ts.ka.ge:8012',
+    --             max_length = 256
+    --         })
+    --     end
+    -- }
 
 
     -- moonfly: color scheme
@@ -250,6 +254,7 @@ require('packer').startup(function(use)
     use 'elzr/vim-json'
     -- use 'vieira/vim-javascript'
     use 'cespare/vim-toml'
+    use 'LnL7/vim-nix'
     use 'smerrill/vcl-vim-plugin'
     use 'JuliaEditorSupport/julia-vim'
     use {
