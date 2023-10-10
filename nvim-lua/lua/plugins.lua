@@ -58,6 +58,9 @@ changes:
 (06/23/2023)
     - add Nix support
     - remove coauthor (for now)
+
+(07/07/2023)
+    - fix hop again
 --]]
 
 
@@ -172,8 +175,9 @@ require('packer').startup(function(use)
 
     -- hop: easymotion but without modifying buffers
     use {
-        'phaazon/hop.nvim',
-        branch = 'v2', -- optional but strongly recommended
+        'smoka7/hop.nvim',
+        -- branch = 'v2', -- optional but strongly recommended
+        tag = '*',
         config = function()
             -- you can configure Hop the way you like here; see :h hop-config
             require'hop'.setup {}

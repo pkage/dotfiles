@@ -95,3 +95,6 @@ map <leader>ll :!lualatex -synctex=1 %<cr>
 map <leader>lm :make<cr>
 map <leader>lb :make biblio<cr>
 map <leader>ls :w<CR>:silent !/Applications/Skim.app/Contents/SharedSupport/displayline <C-r>=line('.')<CR> %<.pdf<CR><CR>
+
+" njk file type
+au BufReadPost,BufNewFile *.njk set syntax=html
