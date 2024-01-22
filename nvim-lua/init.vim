@@ -25,6 +25,12 @@ set expandtab
 " some keybinds
 nnoremap <C-n> :NvimTreeToggle<CR>
 nnoremap <C-p> :lua require'telescope.builtin'.find_files{}<CR>
+" terminal compat
+tnoremap <C-_> <C-\><C-n>
+autocmd TermOpen * setlocal nonumber norelativenumber
+" lsp: open float
+nnoremap <C-_> :lua vim.diagnostic.open_float()<CR>
+
 
 " EasyAlign
 xmap ga <Plug>(EasyAlign)
@@ -91,10 +97,11 @@ map <leader>; V:s/;//g<cr>:noh<cr>
 
 
 " tex support
-map <leader>ll :!lualatex -synctex=1 %<cr>
-map <leader>lm :make<cr>
+" map <leader>ll :!lualatex -synctex=1 %<cr>
+map <leader>ll :make<cr>
 map <leader>lb :make biblio<cr>
 map <leader>ls :w<CR>:silent !/Applications/Skim.app/Contents/SharedSupport/displayline <C-r>=line('.')<CR> %<.pdf<CR><CR>
 
 " njk file type
 au BufReadPost,BufNewFile *.njk set syntax=html
+
