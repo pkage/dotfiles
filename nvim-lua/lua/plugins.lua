@@ -166,12 +166,12 @@ require('packer').startup(function(use)
     }
 
     -- spellsitter: syntax aware spellcheck
-    use {
-        'lewis6991/spellsitter.nvim',
-        config = function()
-            require('spellsitter').setup()
-        end
-    }
+    --use {
+    --    'lewis6991/spellsitter.nvim',
+    --    config = function()
+    --        require('spellsitter').setup()
+    --    end
+    --}
 
     -- hop: easymotion but without modifying buffers
     use {
