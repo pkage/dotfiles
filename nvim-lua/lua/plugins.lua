@@ -256,6 +256,7 @@ require('packer').startup(function(use)
     -- language support
     use 'pkage/sparkup'
     use 'elzr/vim-json'
+    use 'imsnif/kdl.vim'
     -- use 'vieira/vim-javascript'
     use 'isobit/vim-caddyfile'
     use 'cespare/vim-toml'
