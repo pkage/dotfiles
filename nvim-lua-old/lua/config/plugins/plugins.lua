@@ -61,6 +61,9 @@ changes:
 
 (07/07/2023)
     - fix hop again
+
+(10/24/2024)
+    - migrate to lazy.nvim
 --]]
 
 

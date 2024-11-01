@@ -1,7 +1,7 @@
 set nocompatible
 
 " plugin config
-lua require('plugins')
+lua require('config.lazy')
 
 
 " editor configuration
@@ -54,7 +54,7 @@ function WriteModeEnable()
     echo "Write mode enabled."
 endfunction
 
-function WriteModeLightEnable()
+function WriteModeLightEnable
     set tw=79
     set fo+=t
     set spell
