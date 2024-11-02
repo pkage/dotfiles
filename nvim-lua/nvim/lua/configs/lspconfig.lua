@@ -4,9 +4,15 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require "lspconfig"
 
 -- EXAMPLE
+-- ltex-ls,lua-language-server,pyright,stylua,svelte-language-server,typescript-language-server
 local servers = {
     "html",
-    "cssls"
+    "cssls",
+    "ltex",
+    "lua_ls",
+    "pyright",
+    "svelte",
+    "ts_ls"
 }
 local nvlsp = require "nvchad.configs.lspconfig"
 
