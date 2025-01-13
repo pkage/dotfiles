@@ -16,3 +16,8 @@ g.multi_cursor_next_key = '<C-b>'
 g.multi_cursor_prev_key = '<C-p>'
 g.multi_cursor_skip_key = '<C-x>'
 g.multi_cursor_quit_key = '<Esc>'
+
+-- tab stuff
+o.tabstop=4
+o.shiftwidth=4
+o.expandtab = true

@@ -7,7 +7,7 @@ local M = {}
 
 M.base46 = {
 	theme = "ashes",
-  integrations = { 'hop' },
+  integrations = { 'hop', 'avante' },
 	-- hl_override = {
 	-- 	Comment = { italic = true },
 	-- 	["@comment"] = { italic = true },

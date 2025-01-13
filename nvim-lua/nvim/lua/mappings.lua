@@ -35,3 +35,5 @@ map("n", "<C-p>", "<cmd>Telescope find_files<cr>", { desc = "telescope find file
 
 map("n", "<leader>'", "V:s/\"/'/g<cr>:noh<cr>", {desc="replace double quotes"})
 map("n", "<leader>;", "V:s/;//g<cr>:noh<cr>", {desc="remove semicolons"})
+
+map('n', '<C-_>', ":lua vim.diagnostic.open_float()<CR>", {desc="open diagnostic float"})
