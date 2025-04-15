@@ -21,3 +21,12 @@ g.multi_cursor_quit_key = '<Esc>'
 o.tabstop=4
 o.shiftwidth=4
 o.expandtab = true
+
+-- filetype
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.ejs",
+  callback = function()
+    vim.bo.syntax   = "html"
+    vim.bo.filetype = "html"
+  end,
+})
