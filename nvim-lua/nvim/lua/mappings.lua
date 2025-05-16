@@ -39,3 +39,7 @@ map("n", "<leader>;", "V:s/;//g<cr>:noh<cr>", {desc="remove semicolons"})
 map('n', '<C-_>', ":lua vim.diagnostic.open_float()<CR>", {desc="open diagnostic float"})
 map('', '<leader>ll', ":make<CR>", {desc="run makefile"})
 map('', '<leader>lb', ":make biblio<CR>", {desc="run makefile (bibliography)"})
+
+-- avante
+map("n", "<leader>aC", ":AvanteClear<cr>", {desc="avante: clear chat"})
+map("n", "<leader>aI", ":lua vim.env.OPENAI_API_KEY = vim.trim(vim.fn.system { '/opt/homebrew/bin/op', 'read', 'op://Private/openai.com/vim-api-key-work' })<cr>:AvanteAsk<cr>", {desc="avante: initialize secrets"})

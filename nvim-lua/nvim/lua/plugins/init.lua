@@ -108,13 +108,20 @@ return {
   },
   {
     "yetone/avante.nvim",
-    event = "VeryLazy",
-    lazy = false,
+    cmd = { "AvanteAsk", "AvanteEdit", "AvanteRefresh", "AvanteToggle", "AvanteShowRepoMap" },
+    keys = {
+        { '<leader>aa', '<cmd>AvanteAsk<cr>', desc = 'avante: ask' }
+    },
+    -- event = "VeryLazy",
+    -- lazy = true,
     version = false, -- set this if you want to always pull the latest change
     opts = function ()
       dofile(vim.g.base46_cache .. "avante")
       return {
-        provider = "openai"
+        provider = "openai",
+        openai = {
+            model = 'gpt-4o'
+        }
       }
     end,
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
@@ -157,23 +164,25 @@ return {
   },
 
   --- writing
-  { 'folke/twilight.nvim' },
+  { 'folke/twilight.nvim', lazy=false },
   {
     'folke/zen-mode.nvim',
+    lazy=false,
     config = function()
-      require('zen-mode').setup {
-        window = {
-          width = 85,
-          options = {
-            number = false,
-            signcolumn = "no"
-          }
-        },
-        plugins = {
-          gitsigns = { enabled = true },
-        }
-      }
-    end
+            require('zen-mode').setup {
+                window = {
+                    width = 85,
+                    options = {
+                        number = false,
+                        signcolumn = "no"
+                    }
+                },
+                plugins = {
+                    gitsigns = { enabled = true },
+                    twilight = { enabled = false },
+                }
+            }
+        end
   },
 
   -- various language support
