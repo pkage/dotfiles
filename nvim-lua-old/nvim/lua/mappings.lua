@@ -5,20 +5,9 @@ require "nvchad.mappings"
 local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
-map("i", "jk", "<ESC>")
+-- map("i", "jk", "<ESC>")
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
-
-local g = vim.g
-
-
--- enable cursorline
-
-g.multi_cursor_use_default_mapping=0
-g.multi_cursor_next_key = '<C-b>'
-g.multi_cursor_prev_key = '<C-p>'
-g.multi_cursor_skip_key = '<C-x>'
-g.multi_cursor_quit_key = '<Esc>'
 
 -- hop stuff
 local hop = require('hop')
@@ -50,3 +39,7 @@ map("n", "<leader>;", "V:s/;//g<cr>:noh<cr>", {desc="remove semicolons"})
 map('n', '<C-_>', ":lua vim.diagnostic.open_float()<CR>", {desc="open diagnostic float"})
 map('', '<leader>ll', ":make<CR>", {desc="run makefile"})
 map('', '<leader>lb', ":make biblio<CR>", {desc="run makefile (bibliography)"})
+
+-- avante
+map("n", "<leader>aC", ":AvanteClear<cr>", {desc="avante: clear chat"})
+map("n", "<leader>aI", ":lua vim.env.OPENAI_API_KEY = vim.trim(vim.fn.system { '/opt/homebrew/bin/op', 'read', 'op://Private/openai.com/vim-api-key-work' })<cr>:AvanteAsk<cr>", {desc="avante: initialize secrets"})
