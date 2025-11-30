@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-	theme = "onedark",
+	theme = "yoru",
     integrations = { 'hop', 'avante' },
 
 	-- hl_override = {
