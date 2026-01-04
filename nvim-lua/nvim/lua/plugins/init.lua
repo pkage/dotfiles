@@ -24,6 +24,16 @@ return {
     -- test new blink
     { import = "nvchad.blink.lazyspec" },
 
+    --- attempt to support devcontainers
+    {
+        'https://codeberg.org/esensar/nvim-dev-container',
+        dependencies = 'nvim-treesitter/nvim-treesitter',
+        lazy=false,
+        opts = function()
+            require("devcontainer").setup{}
+        end
+    },
+
     -- {
     -- 	"nvim-treesitter/nvim-treesitter",
     -- 	opts = {
