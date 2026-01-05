@@ -11,6 +11,8 @@ local function docker_cmd(cmd)
     return vim.list_extend({ "docker", "compose", "exec", "-T", compose_service }, cmd)
 end
 
+--[[
+
 -- Register a new server only once
 if not configs.docker_ros_pyright then
     configs.docker_ros_pyright = {
@@ -50,6 +52,15 @@ if not configs.docker_ros_pyright then
                 },
             },
 
+        }
+    }
+
+    -- vim.lsp.config('docker_ros_pyright', configs.docker_ros_pyright)
+end
+
+
+lspconfig.docker_ros_pyright.setup({
+
             -- fixes issue with lang server being killed
             before_init = function(params)
                 params.processId = vim.NIL
@@ -81,12 +92,81 @@ if not configs.docker_ros_pyright then
                         desc = 'Organize Imports',
                     })
             end
-        }
-    }
-
-    -- vim.lsp.config('docker_ros_pyright', configs.docker_ros_pyright)
-end
-
-
-lspconfig.docker_ros_pyright.setup({})
+})
 vim.lsp.enable('docker_ros_pyright')
+--]]
+
+
+-- Create an autocommand group so we don't duplicate listeners on reload
+local group = vim.api.nvim_create_augroup("DockerLspConfig", { clear = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "python",
+    group = group,
+    callback = function(ev)
+        -- 1. Find the project root (where docker-compose.yml lives)
+        local root_pattern = { "docker-compose.yml", ".neovim-docker-ros" }
+        local root_dir = vim.fs.dirname(vim.fs.find(root_pattern, { upward = true, path = ev.file })[1])
+
+        -- Only start if we found a valid root
+        if root_dir then
+            -- Check for conflicting system clients and detach them from this buffer
+            local conflict_client = vim.lsp.get_clients({ name = "pyright", bufnr = 0 })[1]
+            if conflict_client then
+                vim.lsp.buf_detach_client(0, conflict_client.id)
+            end
+            vim.cmd('LspStop pyright')
+
+            local client_id = vim.lsp.start({
+                name = "docker_ros_pyright",
+
+                -- The Command
+                cmd = { 
+                    "docker", "compose", "exec", 
+                    "-T",       -- No TTY
+                    "-i",       -- Interactive (Keep Stdin open!)
+                    "ros",      -- Service Name
+                    -- "pyright-langserver", "--stdio" 
+                    "bash", "-c", -- Wrap in bash to allow sourcing
+                    -- Note: We use a wildcard (*) for the distro so it works on humble/iron/jazzy automatically
+                    "source /opt/ros/*/setup.bash && pyright-langserver --stdio"
+                },
+                --
+                -- fixes issue with lang server being killed
+                before_init = function(params)
+                    params.processId = nil--vim.NIL
+                end,
+
+                -- The Environment (Fixes the socket issue)
+                cmd_env = {
+                    DOCKER_HOST = "unix://" .. os.getenv("HOME") .. "/.orbstack/run/docker.sock",
+                    PATH = vim.env.PATH,
+                },
+
+                root_dir = root_dir,
+
+                -- Settings
+                settings = {
+                    python = {
+                        analysis = {
+                            autoSearchPaths = true,
+                            useLibraryCodeForTypes = true,
+                            diagnosticMode = "openFilesOnly",
+                        },
+                    },
+                },
+
+                -- Capabilities (Hook into nvim-cmp if you use it)
+                -- capabilities = require('cmp_nvim_lsp').default_capabilities(),
+
+                -- Fix for Docker PID issue
+                on_new_config = function(new_config, new_root_dir)
+                    new_config.processId = vim.NIL
+                end,
+            })
+
+            -- Optional: Notify if it attached successfully
+            -- if client_id then vim.notify("Docker LSP Attached") end
+        end
+    end,
+})
