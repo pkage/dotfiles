@@ -117,6 +117,11 @@ vim.api.nvim_create_autocmd("FileType", {
             end
             vim.cmd('LspStop pyright')
 
+            local cmd_str = string.format(
+                "cd /ws && source /opt/ros/*/setup.bash && export PYTHONPATH=$PYTHONPATH:. && pyright-langserver --stdio",
+                root_dir
+            )
+
             local client_id = vim.lsp.start({
                 name = "docker_ros_pyright",
 
@@ -129,7 +134,7 @@ vim.api.nvim_create_autocmd("FileType", {
                     -- "pyright-langserver", "--stdio" 
                     "bash", "-c", -- Wrap in bash to allow sourcing
                     -- Note: We use a wildcard (*) for the distro so it works on humble/iron/jazzy automatically
-                    "source /opt/ros/*/setup.bash && pyright-langserver --stdio"
+                    cmd_str
                 },
                 --
                 -- fixes issue with lang server being killed

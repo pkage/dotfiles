@@ -1,4 +1,4 @@
-require 'configs.docker_ros_lsp'
+-- require 'configs.docker_ros_lsp'
 require("nvchad.configs.lspconfig").defaults()
 
 local servers = { 
@@ -6,7 +6,7 @@ local servers = {
     'cssls',
     'pyright',
     'rust_analyzer',
-    'docker_ros_pyright'
+    -- 'docker_ros_pyright'
 }
 vim.lsp.enable(servers)
 
