@@ -14,21 +14,6 @@ return {
     },
 
     {
-        "nvim-treesitter/nvim-treesitter",
-        branch = "master",
-        event = { "BufReadPost", "BufNewFile" },
-        cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
-        build = ":TSUpdate",
-        opts = function()
-            return require "nvchad.configs.treesitter"
-        end,
-        config = function(_, opts)
-            require("nvim-treesitter.config").setup(opts)
-        end,
-    },
-
-
-    {
         "nvim-tree/nvim-tree.lua",
         cmd = { "NvimTreeToggle", "NvimTreeFocus" },
         opts = function()
