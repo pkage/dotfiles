@@ -8,7 +8,7 @@ autoload -Uz compinit && compinit
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-setopt autocd
+# setopt autocd
 bindkey -v
 
 # quality of life stuff
@@ -18,6 +18,7 @@ alias res="cd ~/repositories"
 alias ..="cd .."
 alias ...="cd ../.."
 alias .="source"
+alias m="make"
 
 # cd*
 alias cdw="pwd > /tmp/lastcd"
@@ -36,10 +37,17 @@ alias jupyter-lab-remote="jupyter lab --ip=0.0.0.0 --no-browser"
 
 
 # text editor setup
+# alias v="OPENAI_API_KEY=(op read op://Private/openai.com/vim-api-key-work) nvim"
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
 export EDITOR="nvim"
+
+vai() {
+  # echo "$@"
+  OPENAI_API_KEY=$(op read op://Private/openai.com/vim-api-key-work) nvim "$@"
+}
+
 
 # git aliases
 alias gB="git blame"
@@ -54,6 +62,8 @@ alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %
 alias gp="git pull"
 alias gs="git status"
 alias gm="git merge"
+alias gS="git switch"
+alias lg="lazygit"
 
 forgit_add=gai
 forgit_diff=gdi
@@ -69,14 +79,14 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # some nvr garbage
-export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
+# export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 
 # jumps
 alias phd="cd ~/Repositories/school/phd"
 alias work="cd ~/Repositories/work"
 
-# rust
-export PATH="$HOME/.cargo/bin:$PATH"
+# picocom use ctrl-b
+alias picocom="picocom -e b"
 
 # local bin
 export PATH="$HOME/.local/bin:$PATH"
@@ -159,3 +169,22 @@ export PATH="/Users/patrick/Library/Python/3.10/bin:$PATH"
 export PNPM_HOME="/Users/patrick/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm endexport PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/private/tmp/gcloud/google-cloud-sdk/path.zsh.inc' ]; then . '/private/tmp/gcloud/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/private/tmp/gcloud/google-cloud-sdk/completion.zsh.inc' ]; then . '/private/tmp/gcloud/google-cloud-sdk/completion.zsh.inc'; fi
+
+export PATH="/Users/patrick/Library/Android/sdk/platform-tools:$PATH"
+
+# spacerake
+alias sraws="aws --profile spacerake"
+
+export OPENAI_API_KEY="op://Private/openai.com/vim-api-key-work"
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+
+# rust
+export PATH="$HOME/.cargo/bin:$PATH"
