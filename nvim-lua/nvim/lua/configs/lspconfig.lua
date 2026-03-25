@@ -6,6 +6,7 @@ local servers = {
     'cssls',
     'pyright',
     'rust_analyzer',
+    'svelte'
     -- 'docker_ros_pyright'
 }
 vim.lsp.enable(servers)
