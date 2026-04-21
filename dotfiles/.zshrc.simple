@@ -17,6 +17,7 @@ alias res="cd ~/Repositories"
 alias phd="cd ~/Repositories/school/phd"
 alias work="cd ~/Repositories/work"
 alias activate="uv python find && source \`uv python find | sed \"s/python3$/activate/g\"\`"
+alias jupyter-lab-remote="jupyter lab --no-browser --ip=0.0.0.0"
 alias .="source"
 
 # cd*
